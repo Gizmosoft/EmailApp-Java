@@ -11,11 +11,30 @@ import com.java.email.app.Email;
 
 @TestInstance(Lifecycle.PER_CLASS)
 class EmailTest {
+	Email e = null;
+	
+	@BeforeAll
+	void instantiateEmail() {
+		e = new Email();
+	}
+	
+	@Test
+	void testGenerateRandomPassword() {
+		System.out.println("Random pass: " + e.generateRandomPassword());
+	}
 
 	@Test
 	void testGenerateRandomNumber() {
-		Email e = new Email("FNAME", "LNAME");
-		System.out.println(e.generaterandomNumber());
+		System.out.println("Random num " + e.generaterandomNumber());
 	}
-
+	
+	@Test
+	void testGenerateAlphaASCII() {
+		System.out.println("Alphabet ASCII " + e.generateAlphaASCII());
+	}
+	
+	@Test
+	void testGenerateSpecialASCII() {
+		System.out.println("Special ASCII " + e.generateSpecialASCII());
+	}
 }
